@@ -1,0 +1,96 @@
+<div class="p-3">
+    <div class="card mb-3">
+        <div class="card-header">
+          Agregar/Modificar Activos
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="inputGroupSelect01">Marca</label>
+                            <select [(ngModel)]="inputs.marca" class="form-control mb-2" id="inputGroupSelect01">
+                                <option *ngFor="let marca of marcas" [ngValue]="marca">{{marca.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect02">Modelo</label>
+                            <select [(ngModel)]="inputs.modelo" class="form-control mb-2" id="inputGroupSelect02">
+                                <option *ngFor="let modelo of modelos" [ngValue]="modelo">{{modelo.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect03">Serie</label>
+                            <input [(ngModel)]="inputs.serie" class="form-control mb-2" id="inputGroupSelect03" placeholder="Ingrese serie" type="text" name="" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect04">Jefatura</label>
+                            <input [(ngModel)]="inputs.jefatura" class="form-control mb-2" id="inputGroupSelect04" placeholder="Ingrese jefatura" type="text" name="" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect04">Fecha de asignación</label>
+                            <input [(ngModel)]="inputs.fechaAsignacion" class="form-control mb-2" id="inputGroupSelect04" placeholder="Ingrese jefatura" type="date" pattern="\d{4}-\d{2}-\d{2}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="inputGroupSelect04">Localidad</label>
+                            <select [(ngModel)]="inputs.localidad" class="form-control mb-2" id="inputGroupSelect04">
+                                <option value="0">Elija una opción...</option>
+                                <option value="1">Las Condes</option>
+                                <option value="2">Viña del mar</option>
+                                <option value="3">Pudahuel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect04">Gerencia</label>
+                            <input [(ngModel)]="inputs.gerencia" class="form-control mb-2" placeholder="Ingrese gerencia" type="text" name="" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect04">Nombre de empleado</label>
+                            <input [(ngModel)]="inputs.empleado" class="form-control mb-2" placeholder="Ingrese el nombre del empleado" type="text" name="" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGroupSelect04">Año de compra</label>
+                            <input [(ngModel)]="inputs.anioCompra" class="form-control mb-2" placeholder="Ingrese el nombre del empleado" min="2000" type="number" name="" id="">
+                        </div>
+                        <div class="pt-4">
+                            <button (click)="action()" type="button" class="d-block m-auto w-75 btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    <div class="card">
+        <div class="card-header">
+          Activos TI
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Serie</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Fecha Asignación</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let fila of activos" [class.table-primary]="fila == selectedEmployed">
+                    <th scope="row">{{fila.serie}}</th>
+                    <td>{{fila.marca.nombre}}</td>
+                    <td>{{fila.modelo.nombre}}</td>
+                    <td>{{fila.fechaAsignacion}}</td>
+                    <td role="button" (click)="editar(fila)">Editar</td>
+                    <td role="button" (click)="eliminar(fila)">Eliminar</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+</div>
